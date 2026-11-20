@@ -23,7 +23,7 @@ Disled asks for your approval again.
 ## How the catalog is published
 
 At every change of `main`, the [publish workflow](.github/workflows/publish.yml)
-builds, on [GitHub Pages](https://oui-dev.github.io/disled-plugins/):
+builds, on [GitHub Pages](https://oui-dev.github.io/Disled-plugins/):
 
 - `zips/<id>-<version>.zip`: the files of each plugin, and the
   [license](LICENSE) of the repository;
@@ -44,19 +44,14 @@ folder in `plugins/`. The plugin API is in the
 
 ## For the maintainers
 
-The publish workflow signs the index with the secrets
-`CATALOG_SIGNING_KEY` and `CATALOG_SIGNING_KEY_PASSWORD`. To make the key,
-once:
-
-```sh
-npx @tauri-apps/cli@2.11.5 signer generate -w disled-catalog.key
-```
-
-Put the content of `disled-catalog.key` and its password in the two
-secrets, and the content of `disled-catalog.key.pub` in `CATALOG_KEY`, in
-`app/src-tauri/src/plugins/catalog.rs` of Disled. Keep the private key out
-of every repository. GitHub Pages publishes from GitHub Actions (Settings ›
-Pages › Source).
+The publish workflow signs the index with the catalog key, minisign key
+`474E5F10EC4C34E3`, from the secrets `CATALOG_SIGNING_KEY` (the private key)
+and `CATALOG_SIGNING_KEY_PASSWORD` (its password). Disled holds its public
+half in `CATALOG_KEY`, in `app/src-tauri/src/plugins/catalog.rs`. Keep a
+backup of the private key and its password outside the computer and out of
+every repository: a new key means a new release of Disled, and its earlier
+versions would read the catalog as not signed. GitHub Pages publishes from
+GitHub Actions (Settings › Pages › Source).
 
 ## License
 
