@@ -2,7 +2,7 @@
 
 The catalog of plugins of [Disled](https://github.com/Oui-Dev/Disled), the
 USB status light: plugins that let another program drive the lamp, which
-the maintainers review at every version. Disled 2.1 and later install them
+the maintainers review at every version. Disled 3.0 and later install them
 from the **Catalog** tab of their integrations window.
 
 | Plugin | What it does |
